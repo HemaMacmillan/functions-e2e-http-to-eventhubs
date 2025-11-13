@@ -5,6 +5,7 @@ using System;
 using System.Text;
 using System.Text.Json;
 using Microsoft.Azure.Cosmos;
+using System.Threading.Tasks;
 
 namespace MyFunctions
 {
