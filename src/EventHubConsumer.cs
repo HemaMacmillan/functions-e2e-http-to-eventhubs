@@ -18,7 +18,7 @@ namespace MyFunctions
         }
 
         [Function("EventHubConsumer")]
-        public void Run(
+        public async Task Run(
             [EventHubTrigger("%EventHubName%",
                              Connection = "EventHubConnection")]
             EventData[] events)
@@ -50,7 +50,7 @@ namespace MyFunctions
                     };
 
                     // Write to Cosmos DB (sync wrapper because Run is void)
-                    container.CreateItemAsync(doc, new PartitionKey(order.orderId))
+                    await container.CreateItemAsync(doc, new PartitionKey(order.orderId))
                             .GetAwaiter()
                             .GetResult();
 
