@@ -51,10 +51,8 @@ namespace MyFunctions
                     };
 
                     // Write to Cosmos DB (sync wrapper because Run is void)
-                    await container.CreateItemAsync(doc, new PartitionKey(order.orderId))
-                            .GetAwaiter()
-                            .GetResult();
-
+                     await container.CreateItemAsync(doc, new PartitionKey(order.orderId));
+                    
                     _logger.LogInformation("Written to Cosmos DB");
                 }
                 catch (Exception ex)
